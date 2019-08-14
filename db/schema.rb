@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_070439) do
     t.text "description"
     t.datetime "event_start"
     t.datetime "event_end"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.bigint "user_id"
     t.bigint "band_id"
     t.datetime "created_at", null: false

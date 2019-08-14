@@ -1,0 +1,28 @@
+<h2>My bookings</h2>
+<% @bookings.each do |booking| %>
+  <p><b><%= booking.band.name %></b></p>
+  <p>Status: <%= booking.status %></p>
+  <p>Start: <%= booking.event_start %></p>
+  <p>End: <%= booking.event_end %></p>
+  <p>Venue: <%= booking.address %></p>
+  <% # still need to add price functionality %>
+  <p>Price: </p>
+<% end %>
+
+<% if current_user.bands.any? %>
+  <h2>Bookings for my band(s)</h2>
+  <% current_user.bands.each do |band| %>
+    <h3><%= band.name %></h3>
+    <% bookings_for_me = band.bookings %>
+    <% if bookings_for_me.empty? %>
+      <p>No bookings :(</p>
+    <% else %>
+      <% bookings_for_me.each do |booking| %>
+        <p>From: <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+        <p>Start: <%= booking.event_start %></p>
+        <p>End: <%= booking.event_end %></p>
+        <p>Venue: <%= booking.address %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
