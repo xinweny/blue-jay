@@ -1,17 +1,30 @@
-<h2><%= @band.name %></h2>
-<% if @band.image.present? %>
-    <%= cl_image_tag @band.image %>
-<% end %>
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
+
+  <div class = "column">
+
+    <h1><%=@band.name%></h1>
+
+    <% if @band.image.present? %>
+      <%= cl_image_tag @band.image, class="show-image" %>
+    <% end %>
+<h4 style="margin-top: 30px">Price</h4>
+<p>$<%=@band.price%> per hour</p>
+
+<h4>Description</h4>
+<p><%=@band.description%></p>
+
+<%=link_to "Back", bands_path, class: "btn btn-primary"%>
+
 
 <% if policy(@band).edit? %>
-    <%= link_to 'Edit band', edit_band_path(@band) %>
-    <p><%= link_to 'Delete band', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %></p>
+    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+    <p><%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %></p>
 <% end %>
-
-<p>$<%= @band.price %></p>
-<p><%= @band.description %></p>
 
 <% unless @band.user == current_user %>
-  <p><%= link_to 'Book this band', new_band_booking_path(@band) %></p>
+  <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary" %></p>
 <% end %>
 
+</div>
+</div>
+</div>
