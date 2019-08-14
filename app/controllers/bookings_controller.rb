@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_band, only: %i[show new create edit]
+  before_action :set_band, only: %i[new create edit]
   before_action :set_booking, only: %i[show edit update]
 
   def index
@@ -50,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:address, :description, :event_start, :event_end)
+    params.require(:booking).permit(:address, :description, :event_start, :event_end, :status)
   end
 end

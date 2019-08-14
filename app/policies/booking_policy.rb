@@ -10,7 +10,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    user_is_owner?
+    user_is_owner? || user_owns_band?
   end
 
   def create?
@@ -18,12 +18,16 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_owner?
+    user_owns_band?
   end
 
   private
 
   def user_is_owner?
     record.user == user
+  end
+
+  def user_owns_band?
+    record.band.user == user
   end
 end
