@@ -11,4 +11,7 @@
 <p>$<%= @band.price %></p>
 <p><%= @band.description %></p>
 
+<% unless @band.user == current_user %>
+  <p><%= link_to 'Book this band', new_band_booking_path(@band) %></p>
+<% end %>
 

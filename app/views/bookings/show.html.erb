@@ -1,0 +1,24 @@
+<h2>Booking for <%= @booking.band.name %></h2>
+<p>Booking id: <%= @booking.id %></p>
+<p>Start: <%= @booking.event_start %></p>
+<p>End: <%= @booking.event_end %></p>
+<p>Venue: <%= @booking.address %></p>
+<% # need price functionality %>
+<p>Total price: </p>
+
+<p>Status: <%= @booking.status.capitalize %></p>
+
+<% if @booking.status == Booking.statuses.keys[0] %>
+  <% if policy(@booking).edit? %>
+    <%= simple_form_for [@band, @booking] do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
+      <%= f.submit 'Accept' %>
+    <% end %>
+    <%= simple_form_for [@band, @booking] do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
+      <%= f.submit 'Reject' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back to bookings', bookings_path %>
