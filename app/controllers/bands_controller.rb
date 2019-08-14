@@ -1,7 +1,11 @@
 class BandsController < ApplicationController
+  before_action :set_band, only: %i[show]
+
   def index
-    @bands = Bands.all
-    authorize @bands
+    @bands = policy_scope(Band)
+  end
+
+  def show
   end
 
   def new
@@ -24,5 +28,10 @@ class BandsController < ApplicationController
 
   def band_params
     params.require(:band).permit(:name, :description, :price)
+  end
+
+  def set_band
+    @band = Band.find(params[:id])
+    authorize @band
   end
 end
