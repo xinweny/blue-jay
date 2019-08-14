@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  before_action :set_band, only: %i[show]
+  before_action :set_band, only: %i[show edit update destroy]
 
   def index
     @bands = policy_scope(Band)
@@ -22,6 +22,23 @@ class BandsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @band.update(band_params)
+    if @band.save
+      redirect_to band_path(@band)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @band.destroy
+    redirect_to bands_path
   end
 
   private

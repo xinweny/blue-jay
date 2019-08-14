@@ -1,6 +1,11 @@
 <% @bands.each do |band| %>
   <div class="band-card">
-    <p><b><%= link_to band.name, band_path(band) %></b></p>
+    <div class="d-flex">
+      <p><b><%= link_to band.name, band_path(band) %></b></p>
+      <% if band.user == current_user %>
+        <p>(MINE)</p>
+      <% end %>
+    </div>
     <p>$<%= band.price %> per hour</p>
   </div>
 <% end %>
