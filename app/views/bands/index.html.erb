@@ -1,11 +1,9 @@
-<div class = "d-flex justify-content-center">
-  <div class="container">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/db5spdngu/image/upload/v1565766123/piano_cbz11g.jpg);">
+  <div class="container" style="width: 500px">
     <h1>bluejay</h1>
-    <h4>Book your jazz band</h4>
-
-<!-- Jazz type search bar -->
-
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <h4 style= "color: white">Book your jazz band</h4>
+    <br>
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
     <input class="form-control string required" type="text" name="search[query]" id="search_query" />
     <button name="button" type="submit" class="btn btn-flat">
@@ -13,39 +11,64 @@
     </button>
   </div>
 <% end %>
-
-<!-- Date search -->
-    <div class="container">
-        <div class="row">
-            <div class='col-sm-6'>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
-        </div>
-    </div>
-
-  </div>
-
-  <!-- Band list -->
-
-<div class = "d-flex justify-content-around">
-<% @bands.each do |band| %>
-  <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-      <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
-      <p class="card-text">$<%= band.price %> per hour</p>
   </div>
 </div>
-<% end %>
+
+<div class="container">
+  <p style="margin-top: 50px"><strong>Your results</strong></p>
+  <div class="row">
+
+    <% @bands.each do |band| %>
+    <div class="col-4 mb-4">
+      <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
+          <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
+        </div>
+      </div>
+    </div>
+    <%end%>
+
+  </div>
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <% @bands.each do |band| %>
+    <div class="col-4 mb-4">
+      <div class="card">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
+          <h2 class="card-trip-pricing">$<%= band.price %>/hr</h2>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
