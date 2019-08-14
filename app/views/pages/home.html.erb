@@ -38,17 +38,7 @@
 
   </div>
 
-  <!-- Band list -->
-  <div class = "d-flex justify-content-around">
-    <div class="card">
-      <% @bands.each do |band| %>
-        <strong><%= band.name %></strong>
-        <%= band.description %>
-        <%= band.price %>
-        <%=link_to "More", band_path(band), class: "btn btn-primary" %>
-      <%end%>
-    </div>
-  </div>
+
 
 
 
