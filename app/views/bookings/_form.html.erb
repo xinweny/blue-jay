@@ -1,0 +1,7 @@
+<%= simple_form_for [@band, @booking] do |f| %>
+  <%= f.input :event_start %>
+  <%= f.input :event_end %>
+  <%= f.input :address, label: 'Venue' %>
+  <%= f.input :description, label: 'Additional information' %>
+  <%= f.submit 'Book' %>
+<% end %>
