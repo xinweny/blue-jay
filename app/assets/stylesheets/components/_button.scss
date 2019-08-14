@@ -1,0 +1,11 @@
+.btn-delete {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 1.2em;
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+
