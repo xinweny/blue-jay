@@ -1,0 +1,13 @@
+<h1><%=@band.name%></h1>
+
+<!-- insert image/banner here -->
+
+<h4>Price</h4>
+<p><%=@band.price%></p>
+
+<h4>Description</h4>
+<p><%=@band.description%></p>
+
+<%=link_to "Back", root_path, class: "btn btn-primary"%>
+
+<%=link_to "Edit", edit_band_path, class: "btn btn-primary"%>

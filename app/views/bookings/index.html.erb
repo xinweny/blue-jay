@@ -1,0 +1,25 @@
+<h1>My Booking List</h1>
+
+<h4> Bands Booked</h4>
+
+<% bookings.each do |booking| %>
+ <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+    <%= booking.user.name %>
+    <%= booking.address %>
+    <%= booking.event_start %>
+    <%= booking.event_end %>
+    <%=link_to booking_path(band), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" do%>
+         <i class="far fa-trash-alt"></i>
+    <%end%>
+<%end%>
+
+<h4>Performances Booked</h4>
+
+<%=link_to "Back", root_path, class: "btn btn-primary"%>
+
+
+
+
+

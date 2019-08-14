@@ -1,4 +1,3 @@
-
 <div class = "d-flex justify-content-center">
   <div class="container">
     <h1>bluejay</h1>
@@ -41,16 +40,15 @@
   <!-- Band list -->
 
   <div class = "d-flex justify-content-around">
-    <div class="card">
       <% @bands.each do |band| %>
-        <strong><%= band.name %></strong>
-        <%= band.description %>
-        <%= band.price %>
+      <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title"><%= band.name %></h5>
+      <p class="card-text">
+        <%= band.description %> <%= band.price %></p>
         <%=link_to "More", band_path(band), class: "btn btn-primary" %>
-      <%end%>
+      </div>
     </div>
+      <%end%>
   </div>
-
-
-
-</div>

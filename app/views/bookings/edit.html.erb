@@ -1,0 +1,11 @@
+<h1> Edit a Booking </h1>
+
+ <%= simple_form_for @booking do |f| %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.input :event_start %>
+  <%= f.input :event_end %>
+  <%= f.button :submit, :class => "btn btn-primary" %>
+<% end %>
+
+<%=link_to "Back", root_path, class: "btn btn-primary"%>
