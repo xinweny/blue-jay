@@ -1,0 +1,6 @@
+<% @bands.each do |band| %>
+  <div class="band-card">
+    <p><b><%= link_to band.name, band_path(band) %></b></p>
+    <p>$<%= band.price %> per hour</p>
+  </div>
+<% end %>
