@@ -1,3 +1,7 @@
 <h2><%= @band.name %></h2>
+<% if policy(@band).edit? %>
+    <%= link_to 'Edit band', edit_band_path(@band) %>
+<% end %>
+
 <p>$<%= @band.price %></p>
 <p><%= @band.description %></p>
