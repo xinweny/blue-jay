@@ -6,7 +6,7 @@
  <div class="card-product">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
     <div class="card-product-infos">
-    <p>booking.user.name</p>
+    <%= "#{booking.user.first_name} #{booking.user.last_name}" %>
     <%= booking.address %>
     <%= booking.event_start %>
     <%= booking.event_end %>
