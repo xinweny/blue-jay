@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Restaurant.destroy_all if Rails.env.development?
+User.destroy_all if Rails.env.development?
+
+User.create!(email: "test@gmail.com", password: "123456")
+
 5.times do
   gender = ['male', 'female']
   name = Faker::Name.name.split(' ')
