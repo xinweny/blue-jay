@@ -4,7 +4,9 @@
 
     <h1><%=@band.name%></h1>
 
-    <div class = "show image">
+    <% if @band.image.present? %>
+      <%= cl_image_tag @band.image, class="show-image" %>
+    <% end %>
 <h4 style="margin-top: 30px">Price</h4>
 <p>$<%=@band.price%> per hour</p>
 
@@ -14,9 +16,14 @@
 <%=link_to "Back", bands_path, class: "btn btn-primary"%>
 
 
-<%=link_to "Edit", edit_band_path, class: "btn btn-primary"%>
+<% if policy(@band).edit? %>
+    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+    <p><%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %></p>
+<% end %>
 
-<%=link_to "Book", edit_band_path, class: "btn btn-primary"%>
+<% unless @band.user == current_user %>
+  <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary" %></p>
+<% end %>
 
 </div>
 </div>
