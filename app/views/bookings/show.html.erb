@@ -1,10 +1,11 @@
-<h2>Booking for <%= @booking.band.name %></h2>
+<h2>Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
 <p>Booking id: <%= @booking.id %></p>
+<p>By: <%= @booking.user.full_name %></p>
 <p>Start: <%= @booking.event_start %></p>
 <p>End: <%= @booking.event_end %></p>
 <p>Venue: <%= @booking.address %></p>
 <% # need price functionality %>
-<p>Total price: </p>
+<p>Total price: $<%= @booking.total_price %></p>
 
 <p>Status: <%= @booking.status.capitalize %></p>
 
