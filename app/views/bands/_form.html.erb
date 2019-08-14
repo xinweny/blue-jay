@@ -2,6 +2,8 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :price, label: 'Price per hour' %>
+  <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
   <% if @band.id.nil? %>
     <%= f.submit 'Create' %>
   <% else %>

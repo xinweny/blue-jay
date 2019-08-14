@@ -1,4 +1,8 @@
 <h2><%= @band.name %></h2>
+<% if @band.image.present? %>
+    <%= cl_image_tag @band.image %>
+<% end %>
+
 <% if policy(@band).edit? %>
     <%= link_to 'Edit band', edit_band_path(@band) %>
     <p><%= link_to 'Delete band', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %></p>
