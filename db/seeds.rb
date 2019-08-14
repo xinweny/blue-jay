@@ -7,10 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Band.destroy_all if Rails.env.development?
+User.destroy_all if Rails.env.development?
+
+test_user = User.create!(email: "test@gmail.com", password: "123456", first_name: "Taro", last_name: "Yamada", age: 35, gender: "male")
+
 5.times do
   gender = ['male', 'female']
   name = Faker::Name.name.split(' ')
   first_name = name[0]
   last_name = name[1]
   User.create!(first_name: first_name, last_name: last_name, email: Faker::Internet.email, age: rand(15..70), gender: gender.sample, password: "123456")
+end
+
+User.all.each do |user|
+  rand(1..2).times do
+    band = Band.new(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300))
+    user.bands << band
+    user.save!
+    band.save!
+  end
 end
