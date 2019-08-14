@@ -24,6 +24,7 @@
       <% bookings_for_me.each do |booking| %>
         <%= link_to booking_path(booking) do %>
           <div class="booking-for-me-card">
+            <p>Status: <%= booking.status %></p>
             <p>From: <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
             <p>Start: <%= booking.event_start %></p>
             <p>End: <%= booking.event_end %></p>
