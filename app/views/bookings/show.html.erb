@@ -1,6 +1,15 @@
 <div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
 
 <h2>Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
+
+<div
+  id="map"
+  style="width: 300px;
+  height: 500px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
 <p>Booking id: <%= @booking.id %></p>
 <p>By: <%= @booking.user.full_name %></p>
 <p>Start: <%= @booking.event_start %></p>
@@ -24,5 +33,6 @@
     <% end %>
   <% end %>
 <% end %>
+
 
 </div>
