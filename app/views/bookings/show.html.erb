@@ -1,3 +1,4 @@
+
 <div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 150px; padding-bottom: 30px;">
   <div class="container">
 
@@ -20,8 +21,8 @@
 
   <p><strong>Booking id:</strong> <%= @booking.id %></p>
   <p><strong>By:</strong> <%= @booking.user.full_name %></p>
-  <p><strong>Start:</strong> <%= @booking.event_start %></p>
-  <p><strong>End:</strong> <%= @booking.event_end %></p>
+  <p><strong>Start:</strong> <%= @booking.time_start %></p>
+  <p><strong>End:</strong> <%= @booking.time_end %></p>
   <p><strong>Venue:</strong> <%= @booking.address %></p>
   <p><strong>Total price:</strong> $<%= @booking.total_price %></p>
   <p><strong>Status:</strong> <%= @booking.status.capitalize %></p>
