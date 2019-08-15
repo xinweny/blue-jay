@@ -12,7 +12,8 @@ class BookingsController < ApplicationController
     @markers = @bookings.where(id: params[:id]).map do |booking|
       {
         lat: booking.latitude,
-        lng: booking.longitude
+        lng: booking.longitude,
+        infoWindow: render_to_string(partial: 'info_window', locals: { booking: booking })
       }
     end
     @booking = @bookings.find(params[:id])
