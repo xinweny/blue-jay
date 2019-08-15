@@ -13,4 +13,12 @@ class Booking < ApplicationRecord
   def total_price
     format('%.2f', (event_end - event_start) * band.price / 3600)
   end
+
+  def time_start
+    event_start.strftime("%H:%M, %a %-d %b %Y")
+  end
+
+  def time_end
+    event_end.strftime("%H:%M, %a %-d %b %Y")
+  end
 end
