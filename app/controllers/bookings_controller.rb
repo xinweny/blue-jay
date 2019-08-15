@@ -7,26 +7,11 @@ class BookingsController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @markers = [{
             lat: @booking.latitude,
             lng: @booking.longitude,
             infoWindow: render_to_string(partial: 'info_window', locals: { booking: @booking })
           }]
-=======
-    index
-    @bookings.geocoded
-    @markers = @bookings.where(id: params[:id]).map do |booking|
-      {
-        lat: booking.latitude,
-        lng: booking.longitude,
-        infoWindow: render_to_string(partial: 'info_window', locals: { booking: booking }),
-        # image_url: helpers.asset_url('logo.png')
-      }
-    end
-    @booking = @bookings.find { |booking| booking.id == params[:id]}
-    authorize @booking
->>>>>>> master
   end
 
   def new

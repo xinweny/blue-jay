@@ -35,7 +35,7 @@
       <p>No bookings :(</p>
     <% else %>
       <% bookings_for_me.each do |booking| %>
-          <div class="booking-for-me-card" style="background-image: linear-gradient(to right top, #f7e6e6, #ffded0, #ffdcb2, #f5e196, #cbea89);">
+          <div class="booking-for-me-card" style="background-image: linear-gradient(to right top, #f7e6e6, #ffded0, #ffdcb2, #f5e196, #cbea89); margin-top: 30px">
             <div class="container">
             <br>
             <p><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %></p>

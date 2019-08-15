@@ -20,8 +20,11 @@
 
 
 <% if policy(@band).edit? %>
-    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-    <p><%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %></p>
+  <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+<% end %>
+
+<% if policy(@band).destroy? %>
+  <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %>
 <% end %>
 
 <% unless @band.user == current_user %>
