@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container" style="margin-left: auto; margin-right: auto">
 
 <div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
 
@@ -9,8 +9,8 @@
       <br>
       <h5><%= booking.band.name %></h5>
       <p><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %></p>
-      <p><strong>Start:</strong> <%= booking.event_start %></p>
-      <p><strong>End:</strong> <%= booking.event_end %></p>
+      <p><strong>Start:</strong> <%= booking.time_start %></p>
+      <p><strong>End:</strong> <%= booking.time_end %></p>
       <p><strong>Venue:</strong> <%= booking.address %></p>
       <p><strong>Price:</strong> $<%= booking.total_price %></p>
       <br>
@@ -19,6 +19,8 @@
 <% end %>
 
 </div>
+
+
 
 
 <div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px">
