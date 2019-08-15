@@ -1,33 +1,45 @@
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; pdding: 30px">
+
+<br>
+
 <h2>Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
-<p>Booking id: <%= @booking.id %></p>
-<p>By: <%= @booking.user.full_name %></p>
-<p>Start: <%= @booking.event_start %></p>
-<p>End: <%= @booking.event_end %></p>
-<p>Venue: <%= @booking.address %></p>
-<p>Total price: $<%= @booking.total_price %></p>
+<br>
 
-<p>Status: <%= @booking.status.capitalize %></p>
-
-<% if @booking.status == Booking.statuses.keys[0] %>
-  <% if policy(@booking).edit? %>
-    <%= simple_form_for [@band, @booking] do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
-      <%= f.submit 'Accept' %>
-    <% end %>
-    <%= simple_form_for [@band, @booking] do |f| %>
-      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
-      <%= f.submit 'Reject' %>
-    <% end %>
-  <% end %>
-<% end %>
 
 <div
   id="map"
-  style="width: 300px;
+  style="width: 100%;
   height: 500px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 
+<br>
+<p><strong>Booking id:</strong> <%= @booking.id %></p>
+<p><strong>By:</strong> <%= @booking.user.full_name %></p>
+<p><strong>Start:</strong> <%= @booking.event_start %></p>
+<p><strong>End:</strong> <%= @booking.event_end %></p>
+<p><strong>Venue:</strong> <%= @booking.address %></p>
+<p><strong>Total price:</strong> $<%= @booking.total_price %></p>
 
-<%= link_to 'Back to bookings', bookings_path %>
+<p><strong>Status:</strong> <%= @booking.status.capitalize %></p>
+<br>
+
+
+<% if @booking.status == Booking.statuses.keys[0] %>
+  <% if policy(@booking).edit? %>
+    <%= simple_form_for [@band, @booking] do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
+      <%= f.submit 'Accept', class: "btn btn-success" %>
+    <% end %>
+    <%= simple_form_for [@band, @booking] do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
+      <%= f.submit 'Reject', class: "btn btn-danger" %>
+      <%= link_to 'Back to bookings', bookings_path %>
+
+    <% end %>
+  <% end %>
+<% end %>
+
+
+</div>

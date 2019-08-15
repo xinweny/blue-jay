@@ -4,8 +4,8 @@
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information' %>
   <% if @booking.id.nil? %>
-    <%= f.submit 'Book' %>
+    <%= f.submit 'Book', class: "btn btn-success" %>
   <% else %>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', class: "btn btn-primary mt-2" %>
   <% end %>
 <% end %>
