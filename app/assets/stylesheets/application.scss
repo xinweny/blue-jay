@@ -27,8 +27,14 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  background-image: linear-gradient(to bottom, #ebebeb, #f0f0f0, #f5f5f5, #fafafa, #ffffff);
+  background-attachment: fixed;
+  background-size: cover;
 }
 
+.content {
+  flex: 1 0 auto;
+}
 
 .footer {
   flex-shrink: 0;
