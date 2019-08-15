@@ -1,7 +1,6 @@
 <%= simple_form_for [@band, @booking] do |f| %>
   <%= f.input :event_start %>
   <%= f.input :event_end %>
-  <% # still need to add price functionality %>
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information' %>
   <% if @booking.id.nil? %>

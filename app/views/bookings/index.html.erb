@@ -5,12 +5,12 @@
 <% @bookings.each do |booking| %>
   <%= link_to booking_path(booking) do %>
     <div class="booking-by-me-card">
-      <p><b><%= link_to booking.band.name %></b></p>
-      <p><strong>Status:</strong> <%= booking.status %></p>
-      <p><strong>Start:</strong> <%= booking.event_start %></p>
-      <p><strong>End:</strong> <%= booking.event_end %></p>
-      <p><strong>Venue:</strong> <%= booking.address %></p>
-      <p><strong>Price:</strong> <%= booking.band.price %> </p>
+      <p><b><%= booking.band.name %></b></p>
+      <p>Status: <%= booking.status %></p>
+      <p>Start: <%= booking.event_start %></p>
+      <p>End: <%= booking.event_end %></p>
+      <p>Venue: <%= booking.address %></p>
+      <p>Price: $<%= booking.total_price %></p>
     </div>
   <% end %>
 <% end %>
@@ -38,11 +38,13 @@
       <% bookings_for_me.each do |booking| %>
           <div class="booking-for-me-card">
             <p><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %></p>
-            <p><strong>From:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+            <p><strong>From: </strong><%= booking.user.full_name %></p>
             <p><strong>Start:</strong> <%= booking.event_start %></p>
             <p><strong>End:</strong> <%= booking.event_end %></p>
             <p><strong>Venue:</strong> <%= booking.address %></p>
+            <p>Price: $<%= booking.total_price %></p>
             <br>
+
           </div>
       <% end %>
     <% end %>
