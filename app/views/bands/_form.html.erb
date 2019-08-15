@@ -1,7 +1,9 @@
 <%= simple_form_for @band do |f| %>
   <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price, label: 'Price per hour' %>
+  <%= f.input :description, hint: "What's your jazz?" %>
+  <%= f.input :price, label: 'Price ($/hour)' %>
+  <%= f.input :tags, hint: 'Make your band more discoverable by adding tags separated by commas (,). e.g. types of jazz, events you do, etc.' %>
+  <%= f.input :samples, hint: 'Provide some links for sound and/or video samples' %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
   <% if @band.id.nil? %>
