@@ -2,7 +2,7 @@
 
   <div class = "column">
 
-    <h1><%=@band.name%></h1>
+    <h1><%= @band.name%></h1>
 
     <% if @band.image.present? %>
       <%= cl_image_tag @band.image, class: "show-image" %>
@@ -11,7 +11,10 @@
 <p>$<%=@band.price%> per hour</p>
 
 <h4>Description</h4>
-<p><%=@band.description%></p>
+<p><%= @band.description%></p>
+
+<h4>Music samples</h4>
+<p><%= @band.samples %></p>
 
 <%=link_to "Back", bands_path, class: "btn btn-primary"%>
 
