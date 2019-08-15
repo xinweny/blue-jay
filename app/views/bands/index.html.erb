@@ -21,7 +21,7 @@
     <% @bands.each do |band| %>
     <div class="col-4 mb-4">
       <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <%= cl_image_tag band_image(band) %>
         <div class="card-trip-infos">
           <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
           <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
