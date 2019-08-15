@@ -2,7 +2,7 @@
   <%= f.input :event_start %>
   <%= f.input :event_end %>
   <%= f.input :address, label: 'Venue' %>
-  <%= f.input :description, label: 'Additional information' %>
+  <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
   <% if @booking.id.nil? %>
     <%= f.submit 'Book', class: "btn btn-success" %>
   <% else %>

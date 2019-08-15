@@ -4,6 +4,10 @@ class Booking < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  validates :address, presence: true
+  validates :event_start, presence: true
+  validates :event_end, presence: true
+
   enum status: %i[pending accepted rejected]
 
   def total_price
