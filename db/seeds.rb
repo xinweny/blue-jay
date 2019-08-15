@@ -24,7 +24,7 @@ end
 
 User.all.each do |user|
   rand(1..2).times do
-    band = Band.create!(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, samples: Faker::Internet.url)
+    band = Band.create!(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, video_url: Faker::Internet.url)
   end
 end
 

@@ -2,7 +2,8 @@
   <%= f.input :name %>
   <%= f.input :description, hint: "What's your jazz?" %>
   <%= f.input :price, label: 'Price ($/hour)' %>
-  <%= f.input :samples, hint: 'Provide some links for sound and/or video samples' %>
+  <%= f.input :audio, hint: 'Upload an audio sample!' %>
+  <%= f.input :video_url, label: 'Video URL', hint: 'Link a video sample!' %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
   <% if @band.id.nil? %>

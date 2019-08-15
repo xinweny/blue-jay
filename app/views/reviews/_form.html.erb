@@ -1,0 +1,5 @@
+<%= simple_form_for [@band, @review] do |f| %>
+  <%= f.input :content, hint: 'How was your experience?' %>
+  <%= f.input :rating,  as: :radio_buttons, collection: 1..5, wrapper: :vertical_collection_inline %>
+  <%= f.submit 'Submit' %>
+<% end %>
