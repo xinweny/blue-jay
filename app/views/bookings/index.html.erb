@@ -1,3 +1,5 @@
+<div class ="container">
+
 <div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
 
 <h2>My bookings</h2>
@@ -19,7 +21,7 @@
 </div>
 
 
-<div class="container d-flex" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px">
 
 
 <% if current_user.bands.any? %>
@@ -29,7 +31,6 @@
   <% current_user.bands.each do |band| %>
     <br>
     <h4><%= band.name %></h4>
-    <br>
     <% bookings_for_me = band.bookings %>
     <% if bookings_for_me.empty? %>
       <p>No bookings :(</p>
@@ -51,6 +52,8 @@
     <% end %>
   <% end %>
 <% end %>
+
+</div>
 
 </div>
 
