@@ -7,6 +7,7 @@ class BandsController < ApplicationController
   end
 
   def show
+    @review = Review.new(band: @band)
   end
 
   def new
