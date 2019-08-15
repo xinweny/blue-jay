@@ -1,36 +1,35 @@
-<div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px">
 
-  <div class = "column">
+    <div class = "column">
 
-    <h1><%= @band.name%></h1>
+      <h1><%= @band.name%></h1>
 
-    <div></div>
-    <%= cl_image_tag band_image(@band), class: "show-image" %>
+      <div></div>
+      <%= cl_image_tag band_image(@band), class: "show-image" %>
 
-<h4 style="margin-top: 30px">Price</h4>
-<p>$<%=@band.price%> per hour</p>
+  <h4 style="margin-top: 30px">Price</h4>
+  <p>$<%=@band.price%> per hour</p>
 
-<h4>Description</h4>
-<p><%= @band.description%></p>
+  <h4>Description</h4>
+  <p><%= @band.description%></p>
 
-<h4>Music samples</h4>
-<p><%= @band.samples %></p>
+  <h4>Music samples</h4>
+  <p><%= @band.samples %></p>
 
-<%=link_to "Back", bands_path, class: "btn btn-primary"%>
+  <%=link_to "Back", bands_path, class: "btn btn-primary"%>
 
 
-<% if policy(@band).edit? %>
-  <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-<% end %>
+  <% if policy(@band).edit? %>
+    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+  <% end %>
 
-<% if policy(@band).destroy? %>
-  <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %>
-<% end %>
+  <% if policy(@band).destroy? %>
+    <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %>
+  <% end %>
 
-<% unless @band.user == current_user %>
-  <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary mt-2" %></p>
-<% end %>
+  <% unless @band.user == current_user %>
+    <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary mt-2" %></p>
+  <% end %>
 
-</div>
-</div>
+  </div>
 </div>
