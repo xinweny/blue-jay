@@ -1,6 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :band
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   enum status: %i[pending accepted rejected]
 
