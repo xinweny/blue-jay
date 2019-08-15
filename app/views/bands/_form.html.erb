@@ -5,9 +5,9 @@
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
   <% if @band.id.nil? %>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Create', class: "btn btn-primary" %>
   <% else %>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', class: "btn btn-primary" %>
   <% end %>
 <% end %>
 

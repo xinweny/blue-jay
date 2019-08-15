@@ -3,16 +3,15 @@
 <h2>My bookings</h2>
 <br>
 <% @bookings.each do |booking| %>
-  <%= link_to booking_path(booking) do %>
     <div class="booking-by-me-card">
-      <p><b><%= booking.band.name %></b></p>
-      <p>Status: <%= booking.status %></p>
-      <p>Start: <%= booking.event_start %></p>
-      <p>End: <%= booking.event_end %></p>
-      <p>Venue: <%= booking.address %></p>
-      <p>Price: $<%= booking.total_price %></p>
+      <p><b><%= link_to booking.band.name, booking_path(booking) %></b></p>
+      <p><strong>Status:</strong> <%= booking.status %></p>
+      <p><strong>Start:</strong> <%= booking.event_start %></p>
+      <p><strong>End:</strong> <%= booking.event_end %></p>
+      <p><strong>Venue:</strong> <%= booking.address %></p>
+      <p><strong>Price:</strong> $<%= booking.total_price %></p>
+      <br>
     </div>
-  <% end %>
 <% end %>
 
 </div>
@@ -52,3 +51,5 @@
 <% end %>
 
 </div>
+
+
