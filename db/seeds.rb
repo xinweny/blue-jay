@@ -18,13 +18,12 @@ test_user = User.create!(email: "test@gmail.com", password: "123456", first_name
   name = Faker::Name.name.split(' ')
   first_name = name[0]
   last_name = name[1]
-  card_picture = url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)"
   User.create!(first_name: first_name, last_name: last_name, email: Faker::Internet.email, age: rand(15..70), gender: gender.sample, password: "123456")
 end
 
 User.all.each do |user|
   rand(1..2).times do
-    band = Band.create!(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id)
+    band = Band.create!(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, samples: Faker::Internet.url)
   end
 end
 
