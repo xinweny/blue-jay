@@ -1,6 +1,6 @@
 <%= simple_form_for [@band, @booking] do |f| %>
-  <%= f.input :event_start %>
-  <%= f.input :event_end %>
+  <%= f.input :event_start, as: :string, input_html: {class: "datepicker"} %>
+  <%= f.input :event_end, as: :string, input_html: {class: "datepicker"} %>
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
   <% if @booking.id.nil? %>
