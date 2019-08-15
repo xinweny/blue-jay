@@ -13,10 +13,11 @@ class BookingsController < ApplicationController
       {
         lat: booking.latitude,
         lng: booking.longitude,
-        infoWindow: render_to_string(partial: 'info_window', locals: { booking: booking })
+        infoWindow: render_to_string(partial: 'info_window', locals: { booking: booking }),
+        # image_url: helpers.asset_url('logo.png')
       }
     end
-    @booking = @bookings.find(params[:id])
+    @booking = @bookings.find { |booking| booking.id == params[:id]}
     authorize @booking
   end
 

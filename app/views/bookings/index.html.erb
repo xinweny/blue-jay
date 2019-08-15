@@ -4,8 +4,8 @@
 <br>
 <% @bookings.each do |booking| %>
     <div class="booking-by-me-card">
-      <p><b><%= link_to booking.band.name, booking_path(booking) %></b></p>
-      <p><strong>Status:</strong> <%= booking.status %></p>
+      <h5><%= booking.band.name %></h5>
+      <p><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %></p>
       <p><strong>Start:</strong> <%= booking.event_start %></p>
       <p><strong>End:</strong> <%= booking.event_end %></p>
       <p><strong>Venue:</strong> <%= booking.address %></p>
@@ -27,7 +27,7 @@
 
   <% current_user.bands.each do |band| %>
 
-    <h3><%= band.name %></h3>
+    <h4><%= band.name %></h4>
     <br>
 
     <% bookings_for_me = band.bookings %>
@@ -41,9 +41,8 @@
             <p><strong>Start:</strong> <%= booking.event_start %></p>
             <p><strong>End:</strong> <%= booking.event_end %></p>
             <p><strong>Venue:</strong> <%= booking.address %></p>
-            <p>Price: $<%= booking.total_price %></p>
+            <p><strong>Price:</strong> $<%= booking.total_price %></p>
             <br>
-
           </div>
       <% end %>
     <% end %>
