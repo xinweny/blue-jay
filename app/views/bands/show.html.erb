@@ -2,17 +2,20 @@
 
     <div class = "column">
 
+      <br>
       <h1><%= @band.name%></h1>
-      <h2><%= @band.jazz_type %></h2>
-
-      <div></div>
+      <br>
+      <h4>Jazz type</h4>
+      <p><%= @band.jazz_type %></p>
       <%= cl_image_tag band_image(@band), class: "show-image" %>
-
+  <br>
   <h4 style="margin-top: 30px">Price</h4>
   <p>$<%=@band.price%> per hour</p>
 
+  <br>
   <h4>Description</h4>
   <p><%= @band.description%></p>
+  <br>
 
   <h4>Music samples</h4>
   <% unless @band.video_url == '' %>
@@ -23,7 +26,9 @@
   <% unless @band.audio.url.nil? %>
     <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
   <% end %>
+  <br>
 
+  <br>
   <h4>Reviews</h4>
   <% if @band.reviews.empty? %>
     <p>No reviews yet.</p>
@@ -39,9 +44,10 @@
       </div>
     <% end %>
   <% end %>
+  <br>
 
   <% if @band.tag_list.empty? %>
-    No tags to show.
+    <!-- No tags to show -->
   <% else %>
     <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
   <% end %>
