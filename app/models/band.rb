@@ -6,8 +6,18 @@ class Band < ApplicationRecord
   mount_uploader :audio, AudioFileUploader
 
   validates :name, presence: true
+  validates :jazz_type, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: true
+
+  include PgSearch
+  pg_search_scope :search_by_name_type_description,
+                  against: { name: 'A',
+                             jazz_type: 'B',
+                             description: 'C' },
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
 
   def average_rating
     return 0 if reviews.empty?

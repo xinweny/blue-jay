@@ -3,7 +3,11 @@ class BandsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @bands = policy_scope(Band)
+    if params[:query].present?
+      @bands = policy_scope(Band).search_by_name_type_description(params[:query])
+    else
+      @bands = policy_scope(Band)
+    end
   end
 
   def show
