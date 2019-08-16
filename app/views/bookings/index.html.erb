@@ -1,10 +1,6 @@
-<div class ="big-container">
-
-  <div class="booking-index-container">
-
-      <h2>My bookings</h2>
-      <br>
-
+<div>
+  <div>
+    <h2>My bookings</h2>
     <% @bookings.each do |booking| %>
       <div class="booking-by-me-card">
         <div class="card border-light mb-3" style="max-width: 18rem;">
@@ -17,7 +13,6 @@
               <strong>End:</strong> <%= booking.time_end %><br>
               <strong>Venue:</strong> <%= booking.address %><br>
               <strong>Price:</strong> $<%= booking.total_price %>
-              <br>
             </p>
           </div>
         </div>
@@ -27,13 +22,10 @@
 
   <div class="booking-index-container">
     <% if current_user.bands.any? %>
-
-      <h2>Bookings <br>for my band(s)</h2>
+      <h2>Bookings for my band(s)</h2>
 
     <% current_user.bands.each do |band| %>
-      <br>
       <h4><%= band.name %></h4>
-      <br>
       <% bookings_for_me = band.bookings %>
       <% if bookings_for_me.empty? %>
       <p>No bookings :(</p>
@@ -61,9 +53,9 @@
             </div>
           </div>
         </div>
-        <% end %>
-        <% end %>
-        <% end %>
-        <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
   </div>
 </div>

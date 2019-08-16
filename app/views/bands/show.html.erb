@@ -1,22 +1,18 @@
-<div class="container d-flex justify-content-center" >
-  <div class="band-container">
+<div>
+  <div>
+    <h1><%= @band.name%></h1>
 
-        <br>
-        <h1><%= @band.name%></h1>
-        <br>
-        <h4>Jazz type</h4>
-        <p><%= @band.jazz_type %></p>
+    <h4>Jazz type</h4>
 
-        <%= cl_image_tag band_image(@band), class: "show-image" %>
-        <br>
+    <p><%= @band.jazz_type %></p>
 
-        <h4 style="margin-top: 30px">Price</h4>
-        <p>$<%=@band.price%> per hour</p>
+    <%= cl_image_tag band_image(@band), class: "show-image" %>
 
-        <br>
-        <h4>Description</h4>
-        <p><%= @band.description%></p>
-        <br>
+    <h4 style="margin-top: 30px">Price</h4>
+    <p>$<%=@band.price%> per hour</p>
+
+    <h4>Description</h4>
+    <p><%= @band.description%></p>
 
     <h4>Music samples</h4>
     <% unless @band.video_url == '' %>
@@ -27,9 +23,7 @@
     <% unless @band.audio.url.nil? %>
       <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
     <% end %>
-    <br>
 
-    <br>
     <h4>Reviews</h4>
     <% if @band.reviews.empty? %>
       <p>No reviews yet.</p>
@@ -69,15 +63,4 @@
     <%= render 'bookings/form' %>
   <% end %>
   </div>
-</div>
-
-
-
-<div class="container">
-
-
-
-
-
-
 </div>

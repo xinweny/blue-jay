@@ -1,11 +1,7 @@
-
-<div class="booking-show-container">
-  <div class="container">
-
-  <br>
+<div>
+  <div>
 
   <h2>Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
-  <br>
 
   <% if @booking.latitude && @booking.longitude %>
     <div
@@ -17,8 +13,6 @@
     ></div>
   <% end %>
 
-  <br>
-
   <p><strong>Booking id:</strong> <%= @booking.id %></p>
   <p><strong>By:</strong> <%= @booking.user.full_name %></p>
   <p><strong>Start:</strong> <%= @booking.time_start %></p>
@@ -26,8 +20,6 @@
   <p><strong>Venue:</strong> <%= @booking.address %></p>
   <p><strong>Total price:</strong> $<%= @booking.total_price %></p>
   <p><strong>Status:</strong> <%= @booking.status.capitalize %></p>
-
-  <br>
 
 
   <% if @booking.status == Booking.statuses.keys[0] %>
