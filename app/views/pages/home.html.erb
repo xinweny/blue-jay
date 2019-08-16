@@ -12,14 +12,10 @@
     <h1>bluejay</h1>
     <h4 style= "color: white">Jazz it up a little</h4>
     <br>
-    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-<% end %>
+    <%= form_tag bands_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search by bands and/or jazz type" %>
+      <%= submit_tag "Search" %>
+    <% end %>
   </div>
 </div>
 

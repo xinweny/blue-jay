@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: %i[index show edit update]
+
+  get 'my_bands', to: 'bands#my_bands', as: :my_bands
 end
