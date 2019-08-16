@@ -1,11 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_band
 
-  def new
-    @review = Review.new(band: @band)
-    authorize @review
-  end
-
   def create
     @review = Review.new(review_params)
     @review.band = @band
@@ -14,7 +9,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to band_path(@band)
     else
-      render :new
+      render 'bands/show'
     end
   end
 

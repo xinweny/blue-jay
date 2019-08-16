@@ -45,32 +45,28 @@
         </div>
       <% end %>
     <% end %>
-    <br>
 
-    <% if @band.tag_list.empty? %>
-      <!-- No tags to show -->
-    <% else %>
-      <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
-    <% end %>
+  <% unless @band.tag_list.empty? %>
+    <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
+  <% end %>
 
-    <div class="buttons-container">
-      <% if policy(@review).new? %>
-        <%= link_to 'Leave a review', new_band_review_path(@band), class: "btn btn-primary" %>
-      <% end %>
 
-      <%=link_to "Back", bands_path, class: "btn btn-primary"%>
+  <% if policy(@review).new? %>
+    <%= render 'reviews/form' %>
+  <% end %>
 
-      <% if policy(@band).edit? %>
-        <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-      <% end %>
+  <%=link_to "Back", bands_path, class: "btn btn-primary"%>
 
-      <% if policy(@band).destroy? %>
-        <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' }, class: "btn btn-primary" %>
-      <% end %>
+  <% if policy(@band).edit? %>
+    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+  <% end %>
 
-      <% unless @band.user == current_user %>
-        <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary" %></p>
-      <% end %>
-    </div>
+  <% if policy(@band).destroy? %>
+    <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' }, class: "btn btn-primary" %>
+  <% end %>
+
+  <% unless @band.user == current_user %>
+    <%= render 'bookings/form' %>
+  <% end %>
   </div>
 </div>

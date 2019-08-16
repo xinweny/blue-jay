@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_band, only: %i[new create edit]
+  before_action :set_band, only: %i[create edit]
   before_action :set_booking, only: %i[show edit update]
 
   def index
@@ -14,11 +14,6 @@ class BookingsController < ApplicationController
           }]
   end
 
-  def new
-    @booking = Booking.new
-    authorize @booking
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
@@ -26,7 +21,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      render :new
+      render 'bands/show'
     end
   end
 
@@ -55,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:address, :description, :event_start, :event_end, :status, :latitude, :longitude)
+    params.require(:booking).permit(:title, :address, :description, :event_start, :event_end, :status, :latitude, :longitude)
   end
 end

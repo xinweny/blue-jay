@@ -1,7 +1,5 @@
 const eventStart = document.querySelector('#booking_event_start');
 const eventEnd = document.querySelector('#booking_event_end');
-console.log(eventStart);
-console.log(eventEnd);
 
 let start = undefined;
 let end = undefined;

@@ -11,6 +11,7 @@ class BandsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @review = Review.new(band: @band)
   end
 
