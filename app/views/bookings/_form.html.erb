@@ -1,11 +1,12 @@
 <%= simple_form_for [@band, @booking] do |f| %>
-  <%= f.input :event_start, as: :string, input_html: {class: "datepicker"} %>
-  <%= f.input :event_end, as: :string, input_html: {class: "datepicker"} %>
+  <%= f.input :event_start, as: :string, input_html: {class: "datepicker_start"} %>
+  <%= f.input :event_end, as: :string, input_html: {class: "datepicker_end"} %>
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
-  <% if @booking.id.nil? %>
-    <%= f.submit 'Book', class: "btn btn-success" %>
-  <% else %>
-    <%= f.submit 'Update', class: "btn btn-primary mt-2" %>
-  <% end %>
+  <div class="total-price" data-price="<%=  @band.price %>"><p><b>Total price:</b> $0</p></div>
+  <%= f.submit 'Book', class: "btn btn-success" %>
+<% end %>
+
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag 'calculate_price' %>
 <% end %>
