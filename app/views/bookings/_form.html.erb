@@ -3,10 +3,12 @@
   <%= f.input :event_end, as: :string, input_html: {class: "datepicker_end"} %>
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
-  <div class="total-price" data-price="<%=  @band.price %>"><p><b>Total price:</b> $0</p></div>
+  <div class="total-price" data-price="<%=  @band.price %>">
+    <p><b>Total price:</b> $0</p>
+  </div>
   <%= f.submit 'Book', class: "btn btn-success" %>
 <% end %>
 
 <%= content_for :after_js do %>
-  <%= javascript_pack_tag 'calculate_price' %>
+<%= javascript_pack_tag 'calculate_price' %>
 <% end %>
