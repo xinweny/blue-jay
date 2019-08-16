@@ -52,10 +52,20 @@ class BandsController < ApplicationController
     authorize @bands
   end
 
+  def tagged
+    if params[:tag].present?
+      @bands = Band.tagged_with(params[:tag])
+      authorize @bands
+    else
+      @bands = Band.all
+      authorize @bands
+    end
+  end
+
   private
 
   def band_params
-    params.require(:band).permit(:name, :description, :price, :image, :video_url, :audio)
+    params.require(:band).permit(:name, :description, :price, :image, :video_url, :audio, :tag_list)
   end
 
   def set_band

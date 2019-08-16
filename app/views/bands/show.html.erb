@@ -3,6 +3,7 @@
     <div class = "column">
 
       <h1><%= @band.name%></h1>
+      <h2><%= @band.jazz_type %></h2>
 
       <div></div>
       <%= cl_image_tag band_image(@band), class: "show-image" %>
@@ -38,6 +39,13 @@
       </div>
     <% end %>
   <% end %>
+
+  <% if @band.tag_list.empty? %>
+    No tags to show.
+  <% else %>
+    <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
+  <% end %>
+
 
   <% if policy(@review).new? %>
     <%= link_to 'Leave a review', new_band_review_path(@band) %>

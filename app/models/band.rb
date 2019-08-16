@@ -2,6 +2,10 @@ class Band < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
+
+  acts_as_taggable_on :tags
+  ActsAsTaggableOn.force_lowercase = true
+
   mount_uploader :image, ImageUploader
   mount_uploader :audio, AudioFileUploader
 
@@ -9,6 +13,7 @@ class Band < ApplicationRecord
   validates :jazz_type, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: true
+  validates :video_url, format: { with: /\Ahttps:\/\/www.youtube.com\/[a-zA-Z\d]{11}\z/ }
 
   include PgSearch
   pg_search_scope :search_by_name_type_description,
