@@ -3,8 +3,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update]
 
   def index
-    if params[:query_by].present?
-      @bookings = policy_scope(Booking).order(event_start: :asc).search_bookings_by_me
+    if params[:query].present?
+      @bookings = policy_scope(Booking).order(event_start: :asc).search_bookings
     else
       @bookings = policy_scope(Booking).order(event_start: :asc)
     end

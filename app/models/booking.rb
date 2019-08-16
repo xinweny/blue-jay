@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
 
   include PgSearch
 
-  pg_search_scope :search_bookings_by_me,
+  pg_search_scope :search_bookings,
     against: :address,
     associated_against: {
                           band: :name,
