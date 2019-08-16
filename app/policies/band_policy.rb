@@ -29,6 +29,10 @@ class BandPolicy < ApplicationPolicy
     return true
   end
 
+  def tagged?
+    return true
+  end
+
   private
 
   def user_is_owner?

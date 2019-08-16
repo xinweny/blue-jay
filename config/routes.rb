@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :bookings, only: %i[index show edit update]
 
   get 'my_bands', to: 'bands#my_bands', as: :my_bands
+  get '/tagged', to: "bands#tagged", as: :tagged
 end

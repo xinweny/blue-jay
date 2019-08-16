@@ -2,6 +2,10 @@ class Band < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
+
+  acts_as_taggable_on :tags
+  ActsAsTaggableOn.force_lowercase = true
+
   mount_uploader :image, ImageUploader
   mount_uploader :audio, AudioFileUploader
 
