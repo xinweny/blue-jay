@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 2019_08_16_012054) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "image"
-    t.text "tags"
-    t.text "samples"
     t.string "audio"
     t.string "video_url"
+    t.string "jazz_type"
     t.index ["user_id"], name: "index_bands_on_user_id"
   end
 

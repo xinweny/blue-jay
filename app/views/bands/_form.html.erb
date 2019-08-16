@@ -1,9 +1,10 @@
 <%= simple_form_for @band do |f| %>
   <%= f.input :name %>
-  <%= f.input :description, hint: "What's your jazz?" %>
+  <%= f.input :jazz_type, label: 'Jazz Style(s)' hint: "What's your jazz?" %>
+  <%= f.input :description, hint: 'Please tell us more about your members and group.' %>
   <%= f.input :price, label: 'Price ($/hour)' %>
   <%= f.input :audio, hint: 'Upload an audio sample!' %>
-  <%= f.input :video_url, label: 'Video URL', hint: 'Link a video sample!' %>
+  <%= f.input :video_url, label: 'Video URL', hint: 'Link a YouTube sample!' %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
   <% if @band.id.nil? %>

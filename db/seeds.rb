@@ -13,6 +13,7 @@ Booking.destroy_all if Rails.env.development?
 
 test_user = User.create!(email: "test@gmail.com", password: "123456", first_name: "Taro", last_name: "Yamada", age: 35, gender: "male")
 addresses = ['Blue Note Tokyo', 'University of Tokyo', 'Narisawa', 'Shangri-La Tokyo', 'Hilton Tokyo']
+jazz_types = ['Bossa Nova', 'Smooth', 'Piano', 'Blues', 'Swing', 'Jazz Trio', 'Vocal', 'Ragtime', 'Soul', 'Latin', 'Stride' ]
 
 5.times do
   gender = ['male', 'female']
@@ -24,20 +25,16 @@ end
 
 User.all.each do |user|
   rand(1..2).times do
-    band = Band.create!(name: Faker::Music.band, description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, video_url: Faker::Internet.url)
+    band = Band.create!(name: Faker::Music.band, jazz_type: jazz_types.sample(rand(1..3)).join(', '), description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, video_url: "https://www.youtube.com/dQw4w9WgXcQ")
   end
 end
 
-User.all.each do |user|
-  rand(1..3).times do
-    band = Band.all.sample
-    booking = Booking.create!(address: addresses.sample, description: Faker::Lorem.paragraph, event_start: DateTime.now, event_end: (DateTime.now.to_time + rand(1..5).hours).to_datetime, user_id: user.id, band_id: band.id)
-  end
-end
+# User.all.each do |user|
+#   band = Band.all.sample
+#   booking = Booking.create!(address: addresses.sample, description: Faker::Lorem.paragraph, event_start: DateTime.now, event_end: (DateTime.now.to_time + rand(1..5).hours).to_datetime, user_id: user.id, band_id: band.id)
+# end
 
-Band.all.each do |band|
-  rand(1..3).times do
-    user = User.all.sample
-    booking = Booking.create!(address: addresses.sample, description: Faker::Lorem.paragraph, event_start: DateTime.now, event_end: (DateTime.now.to_time + rand(1..5).hours).to_datetime, user_id: user.id, band_id: band.id)
-  end
-end
+# Band.all.each do |band|
+#   user = User.all.sample
+#   booking = Booking.create!(address: addresses.sample, description: Faker::Lorem.paragraph, event_start: DateTime.now, event_end: (DateTime.now.to_time + rand(1..5).hours).to_datetime, user_id: user.id, band_id: band.id)
+# end
