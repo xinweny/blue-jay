@@ -3,6 +3,8 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 300px;
+  width: 300px;
+  margin: 20px;
 }
 
 .card-trip > img {
@@ -24,7 +26,7 @@
 }
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -38,11 +40,10 @@
   width: 40px;
 }
 
-#my-band {
+.card-trip-pricing {
   position: absolute;
-  bottom: 10px;
-  left: 16px;
-  background-color: #fffa77;
+  bottom: 0px;
+  right: 15px;
 }
 
 .booking-by-me-card {
