@@ -10,18 +10,6 @@ class Booking < ApplicationRecord
 
   enum status: %i[pending accepted rejected]
 
-  include PgSearch
-
-  pg_search_scope :search_bookings,
-    against: :address,
-    associated_against: {
-                          band: :name,
-                          user: [ :first_name, :last_name ]
-                        },
-    using: {
-        tsearch: { prefix: true }
-    }
-
   def total_price
     format('%.2f', (event_end - event_start) * band.price / 3600)
   end

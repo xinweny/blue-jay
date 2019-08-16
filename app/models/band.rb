@@ -27,4 +27,8 @@ class Band < ApplicationRecord
     reviews.each { |review| rating += review.rating }
     (rating.to_f / reviews.length).round(2)
   end
+
+  def youtube_url
+    video_url.gsub('https://www.youtube.com/', 'https://www.youtube.com/embed/')
+  end
 end
