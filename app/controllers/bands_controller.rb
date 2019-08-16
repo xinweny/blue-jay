@@ -3,10 +3,15 @@ class BandsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @bands = policy_scope(Band)
+    if params[:query].present?
+      @bands = policy_scope(Band).search_by_name_type_description(params[:query])
+    else
+      @bands = policy_scope(Band)
+    end
   end
 
   def show
+    @review = Review.new(band: @band)
   end
 
   def new
@@ -42,10 +47,25 @@ class BandsController < ApplicationController
     redirect_to bands_path
   end
 
+  def my_bands
+    @bands = Band.where(user: current_user)
+    authorize @bands
+  end
+
+  def tagged
+    if params[:tag].present?
+      @bands = Band.tagged_with(params[:tag])
+      authorize @bands
+    else
+      @bands = Band.all
+      authorize @bands
+    end
+  end
+
   private
 
   def band_params
-    params.require(:band).permit(:name, :description, :price, :image, :tags, :samples)
+    params.require(:band).permit(:name, :description, :price, :image, :video_url, :audio, :tag_list)
   end
 
   def set_band

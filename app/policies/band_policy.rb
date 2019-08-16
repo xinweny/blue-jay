@@ -1,7 +1,7 @@
 class BandPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(user: user)
     end
   end
 
@@ -23,6 +23,14 @@ class BandPolicy < ApplicationPolicy
 
   def destroy?
     user_is_owner?
+  end
+
+  def my_bands?
+    return true
+  end
+
+  def tagged?
+    return true
   end
 
   private

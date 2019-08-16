@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_044941) do
+ActiveRecord::Schema.define(version: 2019_08_16_012054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 2019_08_15_044941) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "image"
-    t.text "tags"
-    t.text "samples"
+    t.string "audio"
+    t.string "video_url"
+    t.string "jazz_type"
     t.index ["user_id"], name: "index_bands_on_user_id"
   end
 
@@ -42,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_08_15_044941) do
     t.float "longitude"
     t.index ["band_id"], name: "index_bookings_on_band_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "band_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["band_id"], name: "index_reviews_on_band_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -89,4 +101,6 @@ ActiveRecord::Schema.define(version: 2019_08_15_044941) do
   add_foreign_key "bands", "users"
   add_foreign_key "bookings", "bands"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "bands"
+  add_foreign_key "reviews", "users"
 end

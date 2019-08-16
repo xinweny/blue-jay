@@ -22,9 +22,11 @@
 
 .banner-two {
   background-size: cover;
+  height: calc(100vh - 70px);
   background-position: center;
-  padding: 300px 0;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-two h1 {

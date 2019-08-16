@@ -1,11 +1,13 @@
 <%= simple_form_for @band do |f| %>
   <%= f.input :name %>
-  <%= f.input :description, hint: "What's your jazz?" %>
-  <%= f.input :price, label: 'Price ($/hour)' %>
-  <%= f.input :tags, hint: 'Make your band more discoverable by adding tags separated by commas (,). e.g. types of jazz, events you do, etc.' %>
-  <%= f.input :samples, hint: 'Provide some links for sound and/or video samples' %>
+  <%= f.input :jazz_type, label: 'Jazz Style(s)', hint: "What's your jazz?" %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
+  <%= f.input :description, hint: 'Please tell us more about your members and group.' %>
+  <%= f.input :price, label: 'Price ($/hour)' %>
+  <%= f.input :audio, hint: 'Upload an audio sample!' %>
+  <%= f.input :video_url, label: 'YouTube URL', error: "Please provide a valid YouTube URL (e.g. https://www.youtube.com/dQw4w9WgXcQ)" %>
+  <%= f.input :tag_list, label: "Add tags", hint: "Make your band more discoverable. Separate tags by commas" %>
   <% if @band.id.nil? %>
     <%= f.submit 'Create', class: "btn btn-primary" %>
   <% else %>
