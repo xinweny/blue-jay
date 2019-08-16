@@ -1,0 +1,7 @@
+<h2>Bands tagged with <%= params[:tag] %></h2>
+
+<% @bands.each do |band| %>
+  <div class="band-card">
+    <h2><%= link_to band.name, band_path(band) %></h2>
+  </div>
+<% end %>

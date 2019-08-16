@@ -55,8 +55,10 @@ class BandsController < ApplicationController
   def tagged
     if params[:tag].present?
       @bands = Band.tagged_with(params[:tag])
+      authorize @bands
     else
       @bands = Band.all
+      authorize @bands
     end
   end
 

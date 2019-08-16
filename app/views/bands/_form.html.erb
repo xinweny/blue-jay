@@ -6,7 +6,7 @@
   <%= f.input :description, hint: 'Please tell us more about your members and group.' %>
   <%= f.input :price, label: 'Price ($/hour)' %>
   <%= f.input :audio, hint: 'Upload an audio sample!' %>
-  <%= f.input :video_url, label: 'Video URL', hint: 'e.g. https://www.youtube.com/dQw4w9WgXcQ' %>
+  <%= f.input :video_url, label: 'YouTube URL', error: "Please provide a valid YouTube URL (e.g. https://www.youtube.com/dQw4w9WgXcQ)" %>
   <%= f.input :tag_list, label: "Add tags", hint: "Make your band more discoverable. Separate tags by commas" %>
   <% if @band.id.nil? %>
     <%= f.submit 'Create', class: "btn btn-primary" %>
