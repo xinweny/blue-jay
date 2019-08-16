@@ -1,6 +1,6 @@
 <%= simple_form_for [@band, @booking] do |f| %>
-  <%= f.input :event_start, as: :string, input_html: {class: "datepicker"} %>
-  <%= f.input :event_end, as: :string, input_html: {class: "datepicker"} %>
+  <%= f.input :event_start, as: :string, input_html: {class: "datepicker_start"} %>
+  <%= f.input :event_end, as: :string, input_html: {class: "datepicker_end"} %>
   <%= f.input :address, label: 'Venue' %>
   <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
   <div class="total-price" data-price="<%=  @band.price %>"><p><b>Total price:</b> $0</p></div>

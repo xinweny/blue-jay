@@ -1,6 +1,9 @@
-<h2>My Bands</h2>
-<% @bands.each do |band| %>
-  <div class="my-band-card">
-    <h3><%= link_to band.name, band_path(band) %></h3>
-  </div>
+<% if user_signed_in? %>
+  <h2>My Bands</h2>
+  <% @bands.each do |band| %>
+    <div class="my-band-card">
+      <h3><%= link_to band.name, band_path(band) %></h3>
+    </div>
+  <% end %>
 <% end %>
+
