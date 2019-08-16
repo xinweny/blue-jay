@@ -1,22 +1,10 @@
-   <style>
-        body{
-    background-color: #0a2b54;
-    background-image: url("https://res.cloudinary.com/db5spdngu/image/upload/v1565766123/piano_cbz11g.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-        }
-    </style>
-
-<div>
-  <div>
+<div class="banner d-flex align-items-center justify-content-around">
+  <div class="banner-content">
     <h1>bluejay</h1>
     <h4 style= "color: white">Jazz it up a little</h4>
-    <br>
     <%= form_tag bands_path, method: :get do %>
       <%= text_field_tag :query, params[:query], placeholder: "Search by bands and/or jazz type" %>
       <%= submit_tag "Search", class: "butt btn btn-primary" %>
     <% end %>
   </div>
 </div>
-
-<!-- Jazz type search bar -->

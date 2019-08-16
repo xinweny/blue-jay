@@ -1,17 +1,17 @@
-<div>
-  <div>
-    <h2>My bookings</h2>
+<div class="booking-index-container d-flex justify-content-around">
+  <div class="bookings-by-me">
+    <h2 class="text-center">My bookings</h2>
     <% @bookings.each do |booking| %>
-      <div class="booking-by-me-card">
-        <div class="card border-light mb-3" style="max-width: 18rem;">
+      <div class="booking-by-me-card d-flex justify-content-around">
+        <div class="card border-light mb-3">
           <div class="card-header"><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= booking.band.name %></h5>
+            <h5 class="card-title text-center"><%= booking.band.name %></h5>
             <p class="card-text">
               <strong>Start:</strong> <%= booking.time_start %><br>
               <strong>End:</strong> <%= booking.time_end %><br>
-              <strong>Venue:</strong> <%= booking.address %><br>
+              <strong>Venue:</strong> <%= booking.address %>
               <strong>Price:</strong> $<%= booking.total_price %>
             </p>
           </div>
@@ -20,42 +20,38 @@
     <% end %>
   </div>
 
-  <div class="booking-index-container">
+  <div class="bookings-for-me">
     <% if current_user.bands.any? %>
-      <h2>Bookings for my band(s)</h2>
+      <h2 class="text-center">Bookings for my band(s)</h2>
 
-    <% current_user.bands.each do |band| %>
-      <h4><%= band.name %></h4>
-      <% bookings_for_me = band.bookings %>
-      <% if bookings_for_me.empty? %>
-      <p>No bookings :(</p>
-
-      <% else %>
-      <% bookings_for_me.each do |booking| %>
-        <div class="booking-for-me-card">
-          <div class="booking-for-me-content-container">
-            <div class="card border-light mb-3" style="max-width: 18rem;">
-              <div class="card-header">
-                <strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"> <p><strong>From: </strong><%= booking.user.full_name %></p></h5>
-                <p class="card-text">
-                  <strong>Start:</strong> <%= booking.time_start %>
-                  <br>
-                  <strong>End:</strong> <%= booking.time_end %>
-                  <br>
-                  <strong>Venue:</strong> <%= booking.address %>
-                  <br>
-                  <strong>Price:</strong> $<%= booking.total_price %>
-                </p>
+      <% current_user.bands.each do |band| %>
+        <h4 class="text-center"><%= band.name %></h4>
+        <% bookings_for_me = band.bookings %>
+        <% if bookings_for_me.empty? %>
+          <p class="text-center">No bookings :(</p>
+        <% else %>
+          <% bookings_for_me.each do |booking| %>
+            <div class="booking-for-me-card">
+              <div>
+                <div>
+                  <div class="card-header">
+                    <strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"> <p><strong>From: </strong><%= booking.user.full_name %></p></h5>
+                    <p class="card-text">
+                      <strong>Start:</strong> <%= booking.time_start %>
+                      <strong>End:</strong> <%= booking.time_end %>
+                      <strong>Venue:</strong> <%= booking.address %>
+                      <strong>Price:</strong> $<%= booking.total_price %>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       <% end %>
-      <% end %>
-      <% end %>
-      <% end %>
+    <% end %>
   </div>
 </div>

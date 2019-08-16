@@ -13,7 +13,7 @@ class Band < ApplicationRecord
   validates :jazz_type, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: true
-  validates :video_url, format: { with: /\Ahttps:\/\/www.youtube.com\/[a-zA-Z\d]{11}\z/ }
+  validates :video_url, presence: false, format: { with: /\Ahttps:\/\/www.youtube.com\/[a-zA-Z\d]{11}\z/ }
 
   include PgSearch
   pg_search_scope :search_by_name_type_description,
