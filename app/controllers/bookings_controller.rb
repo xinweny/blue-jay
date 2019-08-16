@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @review = Review.new
     @booking.user = current_user
     @booking.band = @band
     if @booking.save
