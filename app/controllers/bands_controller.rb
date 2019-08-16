@@ -47,6 +47,11 @@ class BandsController < ApplicationController
     redirect_to bands_path
   end
 
+  def my_bands
+    @bands = Band.where(user: current_user)
+    authorize @bands
+  end
+
   private
 
   def band_params
