@@ -1,36 +1,64 @@
-<div class="container" style="background-color: white; width: 500px; margin-top: 100px; padding: 30px">
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px">
 
-  <div class = "column">
+    <div class = "column">
 
-    <h1><%= @band.name%></h1>
+      <h1><%= @band.name%></h1>
+      <h2><%= @band.jazz_type %></h2>
 
-    <% if @band.image.present? %>
-      <%= cl_image_tag @band.image, class: "show-image" %>
+      <div></div>
+      <%= cl_image_tag band_image(@band), class: "show-image" %>
+
+  <h4 style="margin-top: 30px">Price</h4>
+  <p>$<%=@band.price%> per hour</p>
+
+  <h4>Description</h4>
+  <p><%= @band.description%></p>
+
+  <h4>Music samples</h4>
+  <% unless @band.video_url == '' %>
+    <iframe width="420" height="315"
+      src=<%= @band.youtube_url %>>
+    </iframe>
+  <% end %>
+  <% unless @band.audio.url.nil? %>
+    <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
+  <% end %>
+
+  <h4>Reviews</h4>
+  <% if @band.reviews.empty? %>
+    <p>No reviews yet.</p>
+  <% else %>
+    <% @band.reviews.each do |review| %>
+      <div class="band-review">
+        <div class="rating">
+          <% review.rating.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+        <p><em>"<%= review.content %>"</em> - <%= review.user.full_name %></p>
+      </div>
     <% end %>
-<h4 style="margin-top: 30px">Price</h4>
-<p>$<%=@band.price%> per hour</p>
-
-<h4>Description</h4>
-<p><%= @band.description%></p>
-
-<h4>Music samples</h4>
-<p><%= @band.samples %></p>
-
-<%=link_to "Back", bands_path, class: "btn btn-primary"%>
+  <% end %>
 
 
-<% if policy(@band).edit? %>
-  <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-<% end %>
+  <% if policy(@review).new? %>
+    <%= link_to 'Leave a review', new_band_review_path(@band) %>
+  <% end %>
 
-<% if policy(@band).destroy? %>
-  <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %>
-<% end %>
+  <%=link_to "Back", bands_path, class: "btn btn-primary"%>
 
-<% unless @band.user == current_user %>
-  <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary mt-2" %></p>
-<% end %>
 
-</div>
-</div>
+  <% if policy(@band).edit? %>
+    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+  <% end %>
+
+  <% if policy(@band).destroy? %>
+    <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } %>
+  <% end %>
+
+  <% unless @band.user == current_user %>
+    <p><%= link_to 'Book this band', new_band_booking_path(@band), class: "btn btn-primary mt-2" %></p>
+  <% end %>
+
+  </div>
 </div>
