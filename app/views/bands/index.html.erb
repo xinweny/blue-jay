@@ -21,7 +21,7 @@
           <%= cl_image_tag band_image(band) %>
           <div class="card-trip-infos">
             <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
-            <p><em><%= band.jazz_type %></em></p>
+              <p><em><%= band.jazz_type %></em></p>
             <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
             <% if band.user == current_user %>
               <p id="my-band">My band</p>

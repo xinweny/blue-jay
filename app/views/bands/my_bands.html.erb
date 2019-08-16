@@ -1,7 +1,11 @@
-<div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px">  <h2>My Bands</h2>
-  <% @bands.each do |band| %>
-    <div class="my-band-card">
-      <h3><%= link_to band.name, band_path(band) %></h3>
-    </div>
-  <% end %>
+<div class="container" style="background-color: white; width: 500px; margin-top: 100px; margin-bottom: 100px; padding: 30px; text-align: center;">
+  <h2>My Bands</h2>
+  <br>
+  <div class="my-band-list">
+    <% @bands.each do |band| %>
+      <div class="my-band-card">
+        <h3><%= link_to band.name, band_path(band) %></h3>
+      </div>
+    <% end %>
+  </div>
 </div>
