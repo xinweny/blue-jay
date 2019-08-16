@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @booking = Booking.new
     @review.band = @band
     @review.user = current_user
     authorize @review
