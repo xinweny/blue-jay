@@ -16,35 +16,40 @@
     <% end %>
 
     <div class="booking-content">
-      <h5 class="booking-content-font">Booked by</h5>
-      <p> <%= @booking.user.full_name %></p>
-      <h5 class="booking-content-font">Booking id</h5>
-      <p><%= @booking.id %></p>
-      <h5 class="booking-content-font">Event start</h5> <p><%= @booking.time_start %></p>
-      <h5 class="booking-content-font">Event end</h5>
-      <p><%= @booking.time_end %></p>
-      <h5 class="booking-content-font">Venue</h5>
-      <p><%= @booking.address %></p>
-      <h5 class="booking-content-font">Total price</h5>
-      <p>$<%= @booking.total_price %></p>
-      <h5 class="booking-content-font">Status</h5>
-      <p><%= @booking.status.capitalize %></p>
-    </div>
-    <div class="px-auto">
-      <% if @booking.status == Booking.statuses.keys[0] || true %>
-        <% if policy(@booking).edit? || true %>
-          <div class="booking-buttons d-flex justify-content-between align-items-center">
-            <%= simple_form_for [@band, @booking] do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
-              <%= f.submit 'Accept', class: "btn btn-success" %>
-            <% end %>
-            <%= simple_form_for [@band, @booking] do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
-              <%= f.submit 'Reject', class: "btn btn-danger" %>
+      <div class="card border-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Booking id <%= @booking.id %></div>
+        <div class="card-body text-secondary">
+        <h5 class="card-title"></h5>
+        <p class="card-text">
+          <h5 class="booking-content-font">Time</h5> <p><%= @booking.time_start %> to <%= @booking.time_end %></p>
+          <h5 class="booking-content-font">Venue</h5>
+          <p><%= @booking.address %></p>
+          <h5 class="booking-content-font">Booked by</h5>
+          <p><%= @booking.user.full_name %></p>
+
+          <h5 class="booking-content-font">Total price</h5>
+          <p>$<%= @booking.total_price %></p>
+          <h5 class="booking-content-font">Status</h5>
+          <p><%= @booking.status.capitalize %></p>
+        </p>
+          <div class="px-auto">
+            <% if @booking.status == Booking.statuses.keys[0] || true %>
+              <% if policy(@booking).edit? || true %>
+                <div class="booking-buttons d-flex justify-content-between align-items-center">
+                  <%= simple_form_for [@band, @booking] do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
+                    <%= f.submit 'Accept', class: "btn btn-success" %>
+                  <% end %>
+                  <%= simple_form_for [@band, @booking] do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
+                    <%= f.submit 'Reject', class: "btn btn-danger" %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
           </div>
-        <% end %>
-      <% end %>
-   </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
