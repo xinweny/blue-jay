@@ -1,6 +1,13 @@
 // Specific CSS for your home-page
-.search-bar-container {
+.search-bar {
   display: flex;
-  justify-content: center;
-  align-content: flex-start;
+  justify-content: flex-start;
+  height: 5vh;
 }
+
+#query {
+  margin-right: 10px;
+  height: 5vh;
+  width: 350px;
+}
+

@@ -3,7 +3,7 @@
     <h1>bluejay</h1>
     <h4 style= "color: white">Jazz it up a little</h4>
     <div class="search-bar-container">
-    <%= form_tag bands_path, method: :get do %>
+    <%= form_tag bands_path, class: "search-bar", method: :get do %>
       <%= text_field_tag :query, params[:query], placeholder: "Search by bands and/or jazz type" %>
       <%= submit_tag "Search", class: "btn btn-primary" %>
     </div>
