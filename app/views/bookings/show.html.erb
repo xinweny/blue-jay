@@ -1,51 +1,64 @@
 <div class="container">
 
   <div class="booking-container">
-    <div class="booking-header d-flex justify-content-between align-items-center">
-      <h2>Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
+    <div class="booking-header d-flex justify-content-between align-items-center px-4">
+      <h2 class="my-4">Booking for <%= link_to @booking.band.name, band_path(@booking.band) %></h2>
       <%= link_to 'Back to bookings', bookings_path %>
     </div>
 
-    <% if @booking.latitude && @booking.longitude %>
-      <div class="booking-map"
-        id="map"
-        style="width: 100%;
-        height: 500px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    <% end %>
+    <div class="d-flex align-items-center justify-content-around flex-wrap">
+      <div class="booking-content d-flex align-items-center justify-content-around">
+        <div class="card border-secondary mb-3">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <p class= "m-0"><b>Booking id</b> #<%= @booking.id %></p>
+            <p class= "m-0"><%= @booking.status.capitalize %></p>
+          </div>
+          <div class="card-body text-secondary d-flex flex-column">
+            <h5 class="booking-content-font"><%= @booking.title %></h5>
+            <div class="card-details d-flex justify-content-between">
+              <p><%= @booking.user.full_name %></p>
+              <p><b>$<%= @booking.total_price %></b></p>
+            </div>
 
-    <div class="booking-content">
-      <div class="card-confirmation border-light my-5 mx-auto text-center">
-        <div class="card-header">CONFIRMATION FORM</div>
-        <div class="card-body text-secondary text-center">
-        <h5 class="card-title"></h5>
-        <p class="card-text">
-          <h5 class="booking-content-font">Time</h5> <p><%= @booking.time_start %> to <%= @booking.time_end %></p>
-          <h5 class="booking-content-font">Venue</h5>
-          <p><%= @booking.address %></p>
-          <h5 class="booking-content-font">Booked by</h5>
-          <p><%= @booking.user.full_name %></p>
+            <h5 class="booking-content-font"><small>Time</small></h5> <p><%= @booking.time_start %> <b>to</b> <%= @booking.time_end %></p>
+            <h5 class="booking-content-font"><small>Venue</small></h5>
+            <p><%= @booking.address %></p>
 
-          <h5 class="booking-content-font">Total price</h5>
-          <p>$<%= @booking.total_price %></p>
-          <h5 class="booking-content-font">Status</h5>
-          <p><%= @booking.status.capitalize %></p>
-        </p>
-          <% if @booking.status == Booking.statuses.keys[0] || true %>
-            <% if policy(@booking).edit? || true %>
-              <div class="booking-buttons d-flex justify-content-center my-5">
-                <%= simple_form_for [@band, @booking] do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
-                  <%= f.submit 'Accept', class: "btn btn-success mr-4" %>
-                <% end %>
-                <%= simple_form_for [@band, @booking] do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
-                  <%= f.submit 'Reject', class: "btn btn-danger" %>
-                <% end %>
-              </div>
+            <h5 class="booking-content-font"><small>Additional Information</small></h5>
+            <% if @booking.description == '' %>
+              None.
+            <% else %>
+              <p><%= @booking.description %></p>
             <% end %>
+            <div class="px-auto mt-3">
+              <% if @booking.status == Booking.statuses.keys[0] || true %>
+                <div class="d-flex justify-content-between align-items-center">
+                  <% if policy(@booking).edit? || true %>
+                    <%= simple_form_for [@band, @booking] do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
+                      <%= f.submit 'Accept', class: "btn btn-success mr-5" %>
+                    <% end %>
+                    <%= simple_form_for [@band, @booking] do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[2] } %>
+                      <%= f.submit 'Reject', class: "btn btn-danger" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-map d-flex justify-content-around align-items-center">
+          <% if @booking.latitude && @booking.longitude %>
+            <div class="booking-map mb-4 mx-4"
+              id="map"
+              style="width: 500px;
+              height: 500px;"
+              data-markers="<%= @markers.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+            ></div>
           <% end %>
         </div>
       </div>

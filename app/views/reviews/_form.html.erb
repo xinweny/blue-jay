@@ -1,5 +1,5 @@
 <%= simple_form_for [band, review], remote: true do |f| %>
   <%= f.input :rating,  as: :radio_buttons, collection: 1..5, wrapper: :vertical_collection_inline %>
   <%= f.input :content, hint: 'How was your experience?' %>
-  <%= f.submit 'Leave a review' %>
+  <%= f.submit 'Leave a review', class: 'btn btn-primary' %>
 <% end %>

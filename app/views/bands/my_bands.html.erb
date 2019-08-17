@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <div class="container">
-    <div class="tagged-header my-4">
+    <div class="bands-header">
       <h2>My bands</h2>
     </div>
 
-    <div class="row" id="my-bands">
+    <div class="bands-grid-container" id="my-bands">
       <% @bands.each do |band| %>
         <%= render 'bands/card', band: band %>
       <% end %>

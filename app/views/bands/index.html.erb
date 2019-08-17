@@ -1,6 +1,13 @@
 <div class="band-index-background">
+  <div class="bands-header">
+    <% if params[:query].nil? || params[:query] == '' %>
+      <h2>All bands</h2>
+    <% else %>
+      <h2>Bands for <%= params[:query] %></h2>
+    <% end %>
+  </div>
   <div class="container">
-    <div class="index-grid-container band-cards pt-4">
+    <div class="bands-grid-container">
       <% @bands.each do |band| %>
         <%= render 'bands/card', band: band %>
       <% end %>
