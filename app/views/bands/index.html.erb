@@ -1,17 +1,19 @@
 <div class="band-index-background">
-  <div class="band-cards d-flex flex-wrap justify-content-around pt-5">
-    <% @bands.each do |band| %>
-      <div class="card-trip mb-5">
-        <%= cl_image_tag band_image(band) %>
-        <div class="card-trip-infos">
-          <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
-          <div class="d-flex align-items-center justify-content-between">
-            <p><em><%= band.jazz_type %></em></p>
-            <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
+  <div class="container">
+    <div class="index-grid-container band-cards pt-4">
+      <% @bands.each do |band| %>
+        <div class="card-trip my-2">
+          <%= cl_image_tag band_image(band) %>
+          <div class="card-trip-infos">
+            <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
+            <div class="d-flex align-items-center justify-content-between">
+              <p><em><%= band.jazz_type %></em></p>
+              <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
+            </div>
           </div>
         </div>
-      </div>
-    <%end%>
+      <%end%>
+    </div>
   </div>
 </div>
 

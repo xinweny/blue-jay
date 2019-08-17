@@ -1,12 +1,13 @@
-<div>
-  <div>
+<div class= "grid-container">
+  <div class="band-info-container">
     <h1><%= @band.name%></h1>
+    <div class= "band-information my-4">
+      <h4>Jazz type</h4>
 
-    <h4>Jazz type</h4>
+      <p><%= @band.jazz_type %></p>
 
-    <p><%= @band.jazz_type %></p>
-
-    <%= cl_image_tag band_image(@band), class: "show-image" %>
+      <%= cl_image_tag band_image(@band), class: "show-image" %>
+    </div>
 
     <h4 style="margin-top: 30px">Price</h4>
     <p>$<%=@band.price%> per hour</p>
@@ -39,23 +40,30 @@
       </div>
     <% end %>
 
-  <% if policy(@review).new? %>
-    <%= render 'reviews/form', band: @band, review: @review %>
-  <% end %>
+    <% if policy(@review).new? %>
+      <%= render 'reviews/form', band: @band, review: @review %>
+    <% end %>
 
-  <%=link_to "Back", bands_path, class: "btn btn-primary"%>
+    <% unless @band.tag_list.empty? %>
+      <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
+    <% end %>
 
-  <% if policy(@band).edit? %>
-    <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-  <% end %>
+    <% if policy(@band).edit? %>
+      <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
+    <% end %>
 
-  <% if policy(@band).destroy? %>
-    <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' }, class: "btn btn-primary" %>
-  <% end %>
+    <% if policy(@band).destroy? %>
+      <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' }, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-  <% unless @band.user == current_user %>
-    <h2>Book this band</h2>
-    <%= render 'bookings/form', band: @band, booking: @booking %>
-  <% end %>
+  <div class = "band-info-container-two">
+    <h4>Booking Form</h4>
+    <div class = "booking form">
+      <% unless @band.user == current_user %>
+        <%= render 'bookings/form', band: @band, booking: @booking %>
+      <% end %>
+      <%=link_to "Back", bands_path, class: "btn btn-primary"%>
+    </div>
   </div>
 </div>
