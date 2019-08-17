@@ -1,7 +1,19 @@
-<h2>Bands tagged with <%= params[:tag] %></h2>
-
-<% @bands.each do |band| %>
-  <div class="band-card">
-    <h2><%= link_to band.name, band_path(band) %></h2>
+<div class="container">
+  <div class="tagged-header my-4">
+    <h2>Bands tagged with <%= params[:tag] %></h2>
   </div>
-<% end %>
+  <div class="tagged-bands">
+    <% @bands.each do |band| %>
+      <div class="card-trip mb-5">
+        <%= cl_image_tag band_image(band) %>
+        <div class="card-trip-infos">
+          <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
+          <div class="d-flex align-items-center justify-content-between">
+            <p><em><%= band.jazz_type %></em></p>
+            <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

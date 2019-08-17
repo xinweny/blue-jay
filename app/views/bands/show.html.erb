@@ -27,7 +27,9 @@
         <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
       <% end %>
 
-    </div>
+  <% unless @band.tag_list.empty? %>
+    <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %> <% end %></p>
+  <% end %>
 
     <div class= "reviews my-5">
 
