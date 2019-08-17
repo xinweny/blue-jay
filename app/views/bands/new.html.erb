@@ -1,6 +1,6 @@
 <div class="container py-5">
   <% if user_signed_in? %>
     <h2 class="text-center">Create a Band</h2>
-    <%= render 'form' %>
+    <%= render 'form', band: @band %>
   <% end %>
 </div>

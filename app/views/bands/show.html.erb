@@ -24,29 +24,30 @@
       <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
     <% end %>
 
+    <% unless @band.tag_list.empty? %>
+      <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
+    <% end %>
+
     <h4>Reviews</h4>
     <% if @band.reviews.empty? %>
       <p>No reviews yet.</p>
     <% else %>
-    <% @band.reviews.each do |review| %>
-      <div class="band-review">
-        <div class="rating">
-          <% review.rating.times do %>
-             <i class="fas fa-star"></i>
-           <% end %>
-         </div>
-        <p><em>"<%= review.content %>"</em> - <%= review.user.full_name %></p>
-        </div>
-      <% end %>
+      <div id="band-reviews">
+        <% @band.reviews.each do |review| %>
+          <div class="band-review">
+            <div class="rating">
+              <% review.rating.times do %>
+                 <i class="fas fa-star"></i>
+               <% end %>
+             </div>
+            <p><em>"<%= review.content %>"</em> - <%= review.user.full_name %></p>
+          </div>
+        <% end %>
+      </div>
     <% end %>
 
-  <% unless @band.tag_list.empty? %>
-    <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
-  <% end %>
-
-
   <% if policy(@review).new? %>
-    <%= render 'reviews/form' %>
+    <%= render 'reviews/form', band: @band, review: @review %>
   <% end %>
 
   <%=link_to "Back", bands_path, class: "btn btn-primary"%>
@@ -60,7 +61,8 @@
   <% end %>
 
   <% unless @band.user == current_user %>
-    <%= render 'bookings/form' %>
+    <h2>Book this band</h2>
+    <%= render 'bookings/form', band: @band, booking: @booking %>
   <% end %>
   </div>
 </div>

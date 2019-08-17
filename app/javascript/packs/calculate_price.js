@@ -31,6 +31,6 @@ function calculatePrice(initDate, newTime) {
     let totalTime = Math.abs((initDate - newDate) / 3600000);
     let totalPrice = Math.round(totalTime * priceValue * 100) / 100;
     console.log(totalPrice);
-    priceDiv.innerHTML = `<p><b>Total price:</b> $${totalPrice}</p>`;
+    priceDiv.innerHTML = `<p><b>TOTAL:</b> $${totalPrice}</p>`;
   }
 }
