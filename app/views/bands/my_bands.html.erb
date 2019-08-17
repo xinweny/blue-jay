@@ -4,21 +4,9 @@
       <h2>My bands</h2>
     </div>
 
-    <div class="row tagged-bands">
+    <div class="row" id="my-bands">
       <% @bands.each do |band| %>
-        <div class="card-trip px-0 mb-5 mx-3 col-4" data-band-id="<%= band.id %>">
-          <%= cl_image_tag band_image(band) %>
-          <div class="card-trip-infos">
-            <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
-            <div class="d-flex align-items-center justify-content-between">
-              <p><em><%= band.jazz_type %></em></p>
-              <h2 class= "card-trip-pricing">$<%= band.price %>/hr</h2>
-            </div>
-          </div>
-          <%= link_to band_path(band), method: :delete, data: { confirm: 'Delete this band?' }, remote: true do %>
-            <i class="fas fa-times"></i>
-          <% end %>
-        </div>
+        <%= render 'bands/card', band: band %>
       <% end %>
     </div>
   </div>
