@@ -1,6 +1,6 @@
 <div class="band-index-background">
   <div class="bands-header">
-    <% if params[:query].nil? %>
+    <% if params[:query].nil? || params[:query] == '' %>
       <h2>All bands</h2>
     <% else %>
       <h2>Bands for <%= params[:query] %></h2>
