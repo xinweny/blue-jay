@@ -1,13 +1,25 @@
 .booking-buttons {
-  width: 150px;
 }
 
 .booking-container {
+  display:flex;
+  flex-direction: column;
   margin: 50px;
   padding: 50px;
   background-image: linear-gradient(to bottom, #f8f8f8, #fafafa, #fbfcfb, #fdfdfd, #ffffff);
 }
 
+.card-confirmation {
+  width: 500px;
+}
+
+.booking-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .booking-content-font {
   color: #3eb1ce;
 }
+
+
