@@ -7,10 +7,17 @@ class ReviewsController < ApplicationController
     @review.band = @band
     @review.user = current_user
     authorize @review
+
     if @review.save
-      redirect_to band_path(@band)
+      respond_to do |format|
+        format.js
+        format.html { redirect_to_band_path(@band) }
+      end
     else
-      render 'bands/show'
+      respond_to do |format|
+        format.js
+        format.html { render 'bands/show' }
+      end
     end
   end
 
