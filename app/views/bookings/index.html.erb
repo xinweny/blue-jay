@@ -1,6 +1,8 @@
 <div class="booking-index-container d-flex justify-content-around">
   <div class="bookings-by-me">
-    <h2 class="text-center">My bookings</h2>
+    <div class="header-container">
+      <h2 class="text-center">My bookings</h2>
+    </div>
     <% @bookings.each do |booking| %>
       <div class="booking-by-me-card d-flex justify-content-around">
         <div class="card border-light mb-3">
@@ -11,7 +13,7 @@
             <p class="card-text">
               <strong>Start:</strong> <%= booking.time_start %><br>
               <strong>End:</strong> <%= booking.time_end %><br>
-              <strong>Venue:</strong> <%= booking.address %>
+              <strong>Venue:</strong> <%= booking.address %><br>
               <strong>Price:</strong> $<%= booking.total_price %>
             </p>
           </div>
@@ -22,7 +24,9 @@
 
   <div class="bookings-for-me">
     <% if current_user.bands.any? %>
-      <h2 class="text-center">Bookings for my band(s)</h2>
+      <div class="header-container">
+        <h2 class="text-center">Bookings for my band(s)</h2>
+      </div>
 
       <% current_user.bands.each do |band| %>
         <h4 class="text-center"><%= band.name %></h4>
