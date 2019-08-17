@@ -1,9 +1,26 @@
 .booking-index-container {
   min-height: calc(100vh - 70px);
+  background-image: linear-gradient(to bottom, #f8f8f8, #fafafa, #fbfcfb, #fdfdfd, #ffffff);
+  flex-wrap: wrap;
 }
 
 .bookings-by-me, .bookings-for-me {
-  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin-top: 50px;
+  padding-top: 100px;
   width: 500px;
+  min-height: 400px;
+  padding-bottom: 50px;
 }
 
+.bookings-for-me {
+  margin-bottom: 50px;
+}
+
+.header-container {
+  width: 100%;
+  height: 100px;
+}
