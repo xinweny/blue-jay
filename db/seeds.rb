@@ -29,9 +29,7 @@ other_users = []
 end
 
 other_users.each do |user|
-  rand(1..2).times do
-    band = Band.create!(name: Faker::Music.band, jazz_type: jazz_types.sample(rand(1..3)).join(', '), description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, video_url: "https://www.youtube.com/dQw4w9WgXcQ")
-  end
+  band = Band.create!(name: Faker::Music.band, jazz_type: jazz_types.sample(rand(1..3)).join(', '), description: Faker::Lorem.paragraph, price: rand(100..300), user_id: user.id, video_url: "https://www.youtube.com/dQw4w9WgXcQ")
 end
 
 rick_band = Band.create!(name: "Rick Astley", jazz_type: "Bossa Nova, Smooth", description: "Richard Paul Astley (born 6 February 1966) is an English singer, songwriter and radio personality. His 1987 song \"Never Gonna Give You Up\" was a number 1 hit single in 25 countries and won the 1988 Brit Award for Best British Single.[1][2] By the time of his retirement in 1993, Astley had sold approximately 40 million records worldwide.[3][4][5]
