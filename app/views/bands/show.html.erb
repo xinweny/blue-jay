@@ -34,14 +34,7 @@
     <% else %>
       <div id="band-reviews">
         <% @band.reviews.each do |review| %>
-          <div class="band-review">
-            <div class="rating">
-              <% review.rating.times do %>
-                 <i class="fas fa-star"></i>
-               <% end %>
-             </div>
-            <p><em>"<%= review.content %>"</em> - <%= review.user.full_name %></p>
-          </div>
+          <%= render 'reviews/show', review: review %>
         <% end %>
       </div>
     <% end %>
