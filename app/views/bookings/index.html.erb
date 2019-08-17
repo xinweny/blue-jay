@@ -11,9 +11,8 @@
           <div class="card-body">
             <h5 class="card-title text-center"><%= booking.band.name %></h5>
             <p class="card-text">
-              <strong>Start:</strong> <%= booking.time_start %><br>
-              <strong>End:</strong> <%= booking.time_end %><br>
-              <strong>Venue:</strong> <%= booking.address %><br>
+              <p><%= booking.time_start %> <b>to</b> <%= booking.time_end %></p>
+              <strong>@</strong><%= booking.address %><br>
               <strong>Price:</strong> $<%= booking.total_price %>
             </p>
           </div>
@@ -44,8 +43,7 @@
                   <div class="card-body">
                     <h5 class="card-title"> <p><strong>From: </strong><%= booking.user.full_name %></p></h5>
                     <p class="card-text">
-                      <strong>Start:</strong> <%= booking.time_start %>
-                      <strong>End:</strong> <%= booking.time_end %>
+                      <p><%= booking.time_start %> <b>to</b> <%= booking.time_end %></p>
                       <strong>Venue:</strong> <%= booking.address %>
                       <strong>Price:</strong> $<%= booking.total_price %>
                     </p>
