@@ -2,14 +2,16 @@
   <%= f.input :title, hint: "What's your event?" %>
   <%= f.input :event_start, as: :string, input_html: {class: "datepicker_start"} %>
   <%= f.input :event_end, as: :string, input_html: {class: "datepicker_end"} %>
-  <%= f.input :address, label: 'Venue' %>
-  <%= f.input :description, label: 'Additional information', hint: 'Special requests, etc.' %>
-  <div class="total-price" data-price="<%=  band.price %>">
-    <p><b>TOTAL:</b> $0</p>
+  <%= f.input :address, as: :string, label: 'Venue' %>
+  <%= f.input :description, as: :string, label: 'Additional information', hint: 'Special requests, etc.' %>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="total-price d-flex align-items-center justify-content-around" data-price="<%=  band.price %>">
+      <p><b>TOTAL:</b> $0</p>
+    </div>
+    <%= f.submit 'Book', class: "btn btn-success" %>
   </div>
-  <%= f.submit 'Book', class: "btn btn-success" %>
 <% end %>
 
 <%= content_for :after_js do %>
-<%= javascript_pack_tag 'calculate_price' %>
+  <%= javascript_pack_tag 'calculate_price' %>
 <% end %>

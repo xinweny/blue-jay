@@ -1,69 +1,88 @@
 <div class= "show-grid-container">
   <div class="band-info-container">
-    <h1><%= @band.name%></h1>
-    <div class= "band-information my-4">
-      <h4>Jazz type</h4>
+    <div class="band-show-header">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1><%= @band.name%></h1>
+        <div class="buttons-container">
+          <% if policy(@band).destroy? %>
+            <%= link_to band_path(@band), method: :delete, data: { confirm: 'Delete this band?' } do %>
+              <i class="fas fa-pen mr-3"></i>
+            <% end %>
+          <% end %>
+          <% if policy(@band).edit? %>
+            <%= link_to edit_band_path(@band) do %>
+              <i class="fas fa-times mr-3"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="band-details d-flex justify-content-between align-items-center">
+        <p><em><%= @band.jazz_type %></em></p>
+        <p><b>$<%=@band.price%> per hour</b></p>
+      </div>
+    </div>
 
-      <p><%= @band.jazz_type %></p>
-
+    <div class="band-show-image mb-3">
       <%= cl_image_tag band_image(@band), class: "show-image" %>
     </div>
 
-    <h4 style="margin-top: 30px">Price</h4>
-    <p>$<%=@band.price%> per hour</p>
+    <div class="band-show-description mb-3">
+      <h3>Description</h3>
+      <p><%= @band.description%></p>
+    </div>
 
-    <h4>Description</h4>
-    <p><%= @band.description%></p>
+    <div class="band-show-samples mb-3">
+      <h3>Samples</h3>
+      <% if @band.video_url.nil? && @band.audio.url.nil? %>
+        <p>No samples available.</p>
+      <% else %>
+        <% unless @band.video_url.nil? %>
+          <iframe width="100%" height="315"
+            src=<%= @band.youtube_url %>>
+          </iframe>
+        <% end %>
+        <% unless @band.audio.url.nil? %>
+          <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
+        <% end %>
+      <% end %>
+    </div>
 
-    <h4>Music samples</h4>
-    <% unless @band.video_url == '' %>
-      <iframe width="100%" height="315"
-        src=<%= @band.youtube_url %>>
-      </iframe>
-    <% end %>
-    <% unless @band.audio.url.nil? %>
-      <audio controls="true" src="<%= cloudinary_url @band.audio.url, resource_type: "video" %>"></audio>
-    <% end %>
+    <div class="band-tag-list">
+      <% unless @band.tag_list.empty? %>
+        <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
+      <% end %>
+    </div>
 
-    <% unless @band.tag_list.empty? %>
-      <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
-    <% end %>
-
-    <h4>Reviews</h4>
-    <% if @band.reviews.empty? %>
-      <p>No reviews yet.</p>
-    <% else %>
-      <div id="band-reviews">
-        <% @band.reviews.each do |review| %>
-          <%= render 'reviews/show', review: review %>
+    <div class="band-show-reviews d-flex justify-content-between">
+      <div>
+        <h4>Reviews</h4>
+        <% if @band.reviews.empty? %>
+          <p>No reviews yet.</p>
+        <% else %>
+          <div id="band-reviews">
+            <% @band.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
 
-    <% if policy(@review).new? %>
-      <%= render 'reviews/form', band: @band, review: @review %>
-    <% end %>
-
-    <% unless @band.tag_list.empty? %>
-      <p><b>Tags: </b><% @band.tag_list.each do |tag| %><%= link_to tag, tagged_path(tag: tag) %><% end %></p>
-    <% end %>
-
-    <% if policy(@band).edit? %>
-      <%= link_to 'Edit', edit_band_path(@band), class: "btn btn-primary" %>
-    <% end %>
-
-    <% if policy(@band).destroy? %>
-      <%= link_to 'Delete', band_path(@band), method: :delete, data: { confirm: 'Delete this band?' }, class: "btn btn-primary" %>
-    <% end %>
+      <div>
+        <% if policy(@review).new? %>
+          <div class="new-review-form">
+            <%= render 'reviews/form', band: @band, review: @review %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div class = "band-info-container-two">
-    <h4>Booking Form</h4>
-    <div class = "booking form">
-      <% unless @band.user == current_user %>
+  <div class="booking-container" id="transparent-background">
+    <% unless @band.user == current_user %>
+      <div class="booking-form">
+        <h4>Book this band</h4>
         <%= render 'bookings/form', band: @band, booking: @booking %>
-      <% end %>
-      <%=link_to "Back", bands_path, class: "btn btn-primary"%>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="tagged-header my-4">
+  <div class="bands-header">
     <h2>Bands tagged with <%= params[:tag] %></h2>
   </div>
-  <div class="tagged-bands">
+  <div class="bands-grid-container">
     <% @bands.each do |band| %>
       <%= render 'bands/card', band: band %>
     <% end %>
