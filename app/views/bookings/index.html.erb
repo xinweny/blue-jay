@@ -6,14 +6,17 @@
     <% @bookings.each do |booking| %>
       <div class="booking-by-me-card d-flex justify-content-around">
         <div class="card border-light mb-3">
-          <div class="card-header"><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %>
+          <div class="card-header text-center"><strong>Status:</strong> <%= link_to booking.status, booking_path(booking) %>
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center"><%= booking.band.name %></h5>
-            <p class="card-text">
-              <p><%= booking.time_start %> <b>to</b> <%= booking.time_end %></p>
-              <strong>@</strong><%= booking.address %><br>
-              <strong>Price:</strong> $<%= booking.total_price %>
+            <h5 class="card-title text-center"><strong><%= booking.band.name %></strong></h5>
+            <h6 class="card-title text-center"><%= booking.address %></h6>
+            <p class="card-text text-center">
+              <br><%= booking.time_start %>
+              <br><strong>to</strong><br>
+              <%= booking.time_end %>
+              <br><br>
+              <strong>Price</strong><br> $<%= booking.total_price %>
             </p>
           </div>
         </div>
