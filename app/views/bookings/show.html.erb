@@ -33,7 +33,7 @@
             <div class="px-auto mt-3">
               <% if @booking.status == Booking.statuses.keys[0] || true %>
                 <div class="d-flex justify-content-between align-items-center">
-                  <% if policy(@booking).edit? || true %>
+                  <% if policy(@booking).edit? %>
                     <%= simple_form_for [@band, @booking] do |f| %>
                       <%= f.input :status, as: :hidden, input_html: { value: Booking.statuses.keys[1] } %>
                       <%= f.submit 'Accept', class: "btn btn-success mr-5" %>

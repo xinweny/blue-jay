@@ -6,6 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
+    return true if user.nil?
     return true if user.bookings.find { |booking| booking.band == record.band }
 
     return false
