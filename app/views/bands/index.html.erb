@@ -1,7 +1,7 @@
 <div class="band-index-background">
-  <div class="band-cards d-flex flex-wrap justify-content-around pt-5">
+  <div class="band-cards d-flex flex-wrap pt-5 px-5">
     <% @bands.each do |band| %>
-      <div class="card-trip mb-5">
+      <div class="card-trip mb-5 mx-3">
         <%= cl_image_tag band_image(band) %>
         <div class="card-trip-infos">
           <h5 class="card-title"><%= link_to band.name, band_path(band) %></h5>
